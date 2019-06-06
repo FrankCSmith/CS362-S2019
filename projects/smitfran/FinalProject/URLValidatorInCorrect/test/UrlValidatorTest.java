@@ -135,7 +135,7 @@ public class UrlValidatorTest extends TestCase {
    }
 
    // Local URLS
-   public void testIsValidSchemes()
+   public void testIsValidLocal()
    {
       // Initialize urlVal object
       UrlValidator urlVal = UrlValidator();
