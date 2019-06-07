@@ -68,7 +68,7 @@ public class UrlValidatorRandomTest extends TestCase {
     		int randNumIdxUrl = randomUrl.nextInt(urlsList.size());
 
     		
-    		System.out.println("TEST " + Integer.toString(i) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
+    		System.out.println("TEST " + Integer.toString(i+1) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
     		if (validList.get(randNumIdxUrl).equals("TRUE")) {
     			//call assertTrue for urlValidator.isValid(url)
     			UrlValidator urlValidator = new UrlValidator();
@@ -135,7 +135,7 @@ public class UrlValidatorRandomTest extends TestCase {
  				   
     		int randNumIdxUrl = randomUrl.nextInt(urlsList.size());
     		
-    		System.out.println("TEST " + Integer.toString(i) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
+    		System.out.println("TEST " + Integer.toString(i+1) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
     		if (validList.get(randNumIdxUrl).equals("TRUE")) {
     			//call assertTrue for urlValidator.isValid(url)
     			UrlValidator urlValidator = new UrlValidator(new String[] {"HTTP","HTTPS"});
@@ -203,7 +203,7 @@ public class UrlValidatorRandomTest extends TestCase {
  				   
     		int randNumIdxUrl = randomUrl.nextInt(urlsList.size());
     		
-    		System.out.println("TEST " + Integer.toString(i) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
+    		System.out.println("TEST " + Integer.toString(i+1) + " TEST INPUT URL: " + urlsList.get(randNumIdxUrl) + " Expected isValid = " + validList.get(randNumIdxUrl));
     		if (validList.get(randNumIdxUrl).equals("TRUE")) {
     			//call assertTrue for urlValidator.isValid(url)
     		    String[] schemes = {"http","https"};
@@ -344,10 +344,14 @@ public class UrlValidatorRandomTest extends TestCase {
 			   expectedValidity = "FALSE";
 		   
 	
-		   System.out.println("TEST " + Integer.toString(i) + " TEST INPUT URL: " + urlTest + " Expected isValid = " + expectedValidity);
+		   System.out.println("TEST " + Integer.toString(i+1) + " TEST INPUT URL: " + urlTest + " Expected isValid = " + expectedValidity);
 		   if (expectedValidity.equals("TRUE")) {
 		   //call assertTrue for urlValidator.isValid(url)
-			   UrlValidator urlValidator = new UrlValidator();
+		       long options =
+		               UrlValidator.ALLOW_2_SLASHES
+		                   + UrlValidator.ALLOW_ALL_SCHEMES
+		                   + UrlValidator.NO_FRAGMENTS;
+		       UrlValidator urlValidator = new UrlValidator(null, null, options);
 			   if (urlValidator.isValid(urlTest)) {
 				   System.out.println("TEST# " + Integer.toString(i+1) + " Actual isValid = TRUE, TEST PASSED");
 			   }
@@ -359,7 +363,11 @@ public class UrlValidatorRandomTest extends TestCase {
 		   }
 		   else {
 			   //call assertFalse for urlValidator.isValid(url)
-			   UrlValidator urlValidator = new UrlValidator();
+		       long options =
+		               UrlValidator.ALLOW_2_SLASHES
+		                   + UrlValidator.ALLOW_ALL_SCHEMES
+		                   + UrlValidator.NO_FRAGMENTS;
+		       UrlValidator urlValidator = new UrlValidator(null, null, options);
 			   if (!urlValidator.isValid(urlTest)) {
 				   System.out.println("TEST# " + Integer.toString(i+1) + " Actual isValid = FALSE, TEST PASSED");
 			   }
