@@ -283,7 +283,7 @@ public class UrlValidator implements Serializable {
             	allowedSchemes.add(schemes[i-1].toLowerCase(Locale.ENGLISH));
             }
         }
-
+        
         this.authorityValidator = authorityValidator;
         
     }
